@@ -10,8 +10,8 @@ use Mix.Config
 # Configures the endpoint
 config :replyr_api, ReplyrApiWeb.Endpoint,
   url: [host: "localhost"],
-  secret_key_base: "co6vFvkGYGgQ1yKfqezk5cvizT+0vhJly9YWsAdHwmSkrzVEAmd7j7BG1G7TSPUg",
-  render_errors: [view: ReplyrApiWeb.ErrorView, accepts: ~w(html json)],
+  secret_key_base: "d19/0et9lUn07pHp0OmUh0mF4zYtRQf5R4iMJLla5u1rpY+4+nWDYHfBn+6UAzPr",
+  render_errors: [view: ReplyrApiWeb.ErrorView, accepts: ~w(json)],
   pubsub: [name: ReplyrApi.PubSub, adapter: Phoenix.PubSub.PG2]
 
 # Configures Elixir's Logger
