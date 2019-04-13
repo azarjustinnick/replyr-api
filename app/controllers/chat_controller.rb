@@ -3,6 +3,8 @@ require 'mongo'
 class ChatController < ApplicationController
   # client = Mongo::Client.new("mongodb://replyr-db.documents.azure.com:10255/replyr")
 
+  before_action :cors
+
   # GET channel/:name
 
   def channel
@@ -32,6 +34,13 @@ class ChatController < ApplicationController
 
   def create_message
     render status: 201
+  end
+
+  def cors
+    headers['Access-Control-Allow-Origin'] = '*'
+    headers['Access-Control-Allow-Methods'] = 'POST, PUT, DELETE, GET, OPTIONS'
+    headers['Access-Control-Request-Method'] = '*'
+    headers['Access-Control-Allow-Headers'] = 'Origin, X-Requested-With, Content-Type, Accept, Authorization'
   end
 
 end
