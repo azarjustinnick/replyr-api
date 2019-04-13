@@ -14,17 +14,17 @@ class ChatController < ApplicationController
         {
           "username" => "adarr",
           "text" => "Message #1",
-          "timestamp" => "1555196237"
+          "timestamp" => 1555196237
         },
         {
           "username" => "nvladimiroff",
           "text" => "Message #2",
-          "timestamp" => "1555197237"
+          "timestamp" => 1555197237
         },
         {
           "username" => "jrenjilian",
           "text" => "Message #3",
-          "timestamp" => "1555198237"
+          "timestamp" => 1555198237
         }
       ]
     }
