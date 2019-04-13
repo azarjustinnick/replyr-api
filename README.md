@@ -23,7 +23,7 @@ A chat api.
 ### GET Channel
 `GET /chat/channel/{channelName}`
 ### POST Message
-`POST /chat/channel/{channelName}`
+`POST /chat/channel/{channelName}/message`
 
 Post data:
 ```javascript
