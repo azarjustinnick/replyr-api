@@ -25,6 +25,7 @@ A chat api.
 
 ## Prereqs
 https://elixir-lang.org/install.html
+
 https://hexdocs.pm/phoenix/installation.html
 
 ## Phoenix/Elixir information
