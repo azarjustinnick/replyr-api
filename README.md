@@ -21,4 +21,14 @@ A chat api.
 ## Endpoint schema
 
 ### GET Channel
+`GET /chat/channel/{channelName}`
 ### POST Message
+`POST /chat/channel/{channelName}`
+
+Post data:
+```javascript
+{
+  "username": string,
+  "text": string
+}
+```
