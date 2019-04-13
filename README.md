@@ -1,5 +1,24 @@
-# ReplyrApi
+# replyr-api
 
+## Data schema
+### Message
+```javascript
+{
+  "channel": string,
+  "username": string,
+  "text": string,
+  "timestamp": string
+}
+```
+### Channel
+```javascript
+{
+  "name": string,
+  "messages": Message[]
+}
+```
+
+## Phoenix/Elixir information
 To start your Phoenix server:
 
   * Install dependencies with `mix deps.get`
