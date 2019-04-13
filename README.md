@@ -23,6 +23,10 @@ A chat api.
 ### GET Channel
 ### POST Message
 
+## Prereqs
+https://elixir-lang.org/install.html
+https://hexdocs.pm/phoenix/installation.html
+
 ## Phoenix/Elixir information
 To start your Phoenix server:
 
