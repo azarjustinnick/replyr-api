@@ -1,7 +1,7 @@
 require 'mongo'
 
 class ChatController < ApplicationController
-  # client = Mongo::Client.new('mongodb://replyr-db.documents.azure.com:10255')
+  # client = Mongo::Client.new("mongodb://replyr-db.documents.azure.com:10255/replyr")
 
   # GET channel/:name
 
@@ -12,17 +12,17 @@ class ChatController < ApplicationController
         {
           "username" => "adarr",
           "text" => "Message #1",
-          "timestamp" => "2019-04-13T23:01:43.025Z"
+          "timestamp" => "1555196237"
         },
         {
           "username" => "nvladimiroff",
           "text" => "Message #2",
-          "timestamp" => "2019-04-13T23:02:43.025Z"
+          "timestamp" => "1555197237"
         },
         {
           "username" => "jrenjilian",
           "text" => "Message #3",
-          "timestamp" => "2019-04-13T23:03:43.025Z"
+          "timestamp" => "1555198237"
         }
       ]
     }
