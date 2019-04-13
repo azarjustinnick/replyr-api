@@ -1,4 +1,5 @@
 # replyr-api
+A chat api.
 
 ## Data schema
 ### Message
@@ -17,3 +18,8 @@
   "messages": Message[]
 }
 ```
+
+## Endpoint schema
+
+### GET Channel
+### POST Message
