@@ -10,7 +10,7 @@ use Mix.Config
 # which you should run after static files are built and
 # before starting your production server.
 config :replyr_api, ReplyrApiWeb.Endpoint,
-  http: [port: System.get_env("PORT")],
+  http: [port: {:system, "PORT"}],
   url: [scheme: "https", host: "replyr.herokuapp.com", port: 443],
   force_ssl: [rewrite_on: [:x_forwarded_proto]],
   cache_static_manifest: "priv/static/cache_manifest.json",
