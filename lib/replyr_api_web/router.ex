@@ -5,7 +5,9 @@ defmodule ReplyrApiWeb.Router do
     plug :accepts, ["json"]
   end
 
-  scope "/api", ReplyrApiWeb do
+  scope "/", ReplyrApiWeb do
     pipe_through :api
+
+    get "/", HomeController, :index
   end
 end
