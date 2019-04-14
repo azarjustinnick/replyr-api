@@ -16,7 +16,7 @@ class ChatController < ApplicationController
     results_json = client[:replyr].find(:id => "channel:#{params[:name]}").to_json
     results = JSON.parse(results_json)[0]
     render json: {
-      "channel" => params[:name],
+      "name" => params[:name],
       "messages" => results['messages']
     }
   end
