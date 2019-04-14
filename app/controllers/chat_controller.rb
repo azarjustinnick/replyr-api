@@ -1,32 +1,22 @@
 require 'mongo'
 
 class ChatController < ApplicationController
-  # client = Mongo::Client.new("mongodb://replyr-db.documents.azure.com:10255/replyr")
 
   before_action :cors
 
   # GET channel/:name
 
   def channel
+    client = Mongo::Client.new(
+      "mongodb://replyr-db.documents.azure.com:10255/replyr?ssl=true",
+      user: "replyr-db",
+      password: Rails.application.credentials.docdb[:db_password])
+
+    results_json = client[:replyr].find(:id => "channel:#{params[:name]}").to_json
+    results = JSON.parse(results_json)[0]
     render json: {
-      "name" => params[:name],
-      "messages" => [
-        {
-          "username" => "adarr",
-          "text" => "Message #1",
-          "timestamp" => 1555196237
-        },
-        {
-          "username" => "nvladimiroff",
-          "text" => "Message #2",
-          "timestamp" => 1555197237
-        },
-        {
-          "username" => "jrenjilian",
-          "text" => "Message #3",
-          "timestamp" => 1555198237
-        }
-      ]
+      "channel" => params[:name],
+      "messages" => results['messages']
     }
   end
 
