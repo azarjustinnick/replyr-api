@@ -1,3 +1,4 @@
+require 'date'
 require 'mongo'
 
 class ChatController < ApplicationController
@@ -23,6 +24,22 @@ class ChatController < ApplicationController
   # POST channel/:name/message
 
   def create_message
+    body = {
+      "channel" => params[:name],
+      "timestamp" => DateTime.now.strftime('%Q').to_i,
+      "username" => params[:chat][:username],
+      "text" => params[:chat][:text]
+    }
+
+    client = Mongo::Client.new(
+      "mongodb://replyr-db.documents.azure.com:10255/replyr?ssl=true",
+      user: "replyr-db",
+      password: Rails.application.credentials.docdb[:db_password])
+
+    client[:replyr]
+      .find(:id => "channel:#{params[:name]}")
+      .update_one("$push" => { :messages => body })
+
     render status: 201
   end
 
