@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  match '*all' => 'application#cors_preflight_check', via: :options
+
   get 'home/index'
 
   get 'chat/channel/:name' => 'chat#channel'
