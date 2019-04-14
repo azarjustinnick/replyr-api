@@ -3,17 +3,17 @@ require 'mongo'
 
 class ChatController < ApplicationController
 
+  @@client = Mongo::Client.new(
+    "mongodb://replyr-db.documents.azure.com:10255/replyr?ssl=true",
+    user: "replyr-db",
+    password: Rails.application.credentials.docdb[:db_password])
+
   before_action :cors
 
   # GET channel/:name
 
   def channel
-    client = Mongo::Client.new(
-      "mongodb://replyr-db.documents.azure.com:10255/replyr?ssl=true",
-      user: "replyr-db",
-      password: Rails.application.credentials.docdb[:db_password])
-
-    results_json = client[:replyr].find(:id => "channel:#{params[:name]}").to_json
+    results_json = @@client[:replyr].find(:id => "channel:#{params[:name]}").to_json
     results = JSON.parse(results_json)[0]
     render json: {
       "name" => params[:name],
@@ -30,12 +30,7 @@ class ChatController < ApplicationController
       "text" => params[:chat][:text]
     }
 
-    client = Mongo::Client.new(
-      "mongodb://replyr-db.documents.azure.com:10255/replyr?ssl=true",
-      user: "replyr-db",
-      password: Rails.application.credentials.docdb[:db_password])
-
-    client[:replyr]
+    @@client[:replyr]
       .find(:id => "channel:#{params[:name]}")
       .update_one("$push" => { :messages => body })
 
