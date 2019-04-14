@@ -25,7 +25,6 @@ class ChatController < ApplicationController
 
   def create_message
     body = {
-      "channel" => params[:name],
       "timestamp" => DateTime.now.strftime('%Q').to_i,
       "username" => params[:chat][:username],
       "text" => params[:chat][:text]
