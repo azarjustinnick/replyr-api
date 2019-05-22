@@ -25,7 +25,15 @@ class DocDb
 
     @client[:replyr]
       .find(:id => "channel:#{channel}")
-      .update_one("$push" => { :messages => body })
+      .update_one('$push' => { :messages => body })
+  end
+
+  def create_post(channel, post)
+    body = construct_post(post)
+
+    @client[:replyr]
+      .find(:id => "channel:#{channel}")
+      .update_one('$push' => { :posts => body })
   end
 
   def get_json(response)
@@ -35,9 +43,20 @@ class DocDb
 
   def construct_message(message)
     {
-      "timestamp" => DateTime.now.strftime('%Q').to_i,
-      "username" => message[:username],
-      "text" => message[:text]
+      'timestamp' => DateTime.now.strftime('%Q').to_i,
+      'username' => message[:username],
+      'text' => message[:text]
+    }
+  end
+
+  def construct_post(post)
+    {
+      'timestamp' => DateTime.now.strftime('%Q').to_i,
+      'username' => post[:username],
+      'title' => post[:title],
+      'text' => post[:text],
+      'tags' => post[:tags],
+      'users' => post[:users]
     }
   end
 

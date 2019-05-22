@@ -13,8 +13,9 @@ class ChatController < ApplicationController
     results = @@docdb.get_channel(params[:name])
 
     render json: {
-      "name" => params[:name],
-      "messages" => results['messages']
+      'name' => params[:name],
+      'messages' => results['messages'],
+      'posts' => results['posts'] || []
     }
   end
 
@@ -22,6 +23,14 @@ class ChatController < ApplicationController
 
   def create_message
     @@docdb.create_message(params[:name], params[:chat])
+
+    render status: 201
+  end
+
+  # POST channel/:name/post
+
+  def create_post
+    @@docdb.create_post(params[:name], params[:chat])
 
     render status: 201
   end
