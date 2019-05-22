@@ -11,6 +11,18 @@ A chat api.
   "timestamp": string
 }
 ```
+### Post
+```javascript
+{
+  "channel": string,
+  "username": string,
+  "title": string,
+  "text": string,
+  "timestamp": string,
+  "users": string[],
+  "tags": string[]
+}
+```
 ### Channel
 ```javascript
 {
@@ -30,5 +42,18 @@ Post data:
 {
   "username": string,
   "text": string
+}
+```
+### POST Post
+`POST /chat/channel/{channelName}/post`
+
+Post data:
+```javascript
+{
+  "username": string,
+  "title": string,
+  "text": string,
+  "users": string[],
+  "tags": string[]
 }
 ```
